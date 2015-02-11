@@ -1,0 +1,78 @@
+	h2 {
+	color:#A6E5E4;
+    	margin-top:0px;
+	padding-top:0px;
+
+	}
+
+	form {
+	marign:0 auto;
+	padding:0;
+	}
+
+	navbar {
+	padding:0;
+	margin:0;
+	border-bottom: 5px solid black;
+	}
+
+	body {
+    background-color:#C6E0E4;
+	margin-top:0px;
+	padding-top:0px;
+	}
+
+	div {
+    margin-top:0px;
+	padding-top:0px;
+	}
+
+	form {
+    margin-top:0px;
+	padding-top:0px;
+	}
+
+	.navbar-form {
+    margin-top:0px;
+	padding-top:0px;
+	}
+
+	#login {
+	margin-top:-10px;
+	}
+
+	#signin {
+	margin-top:-10px;
+	}
+
+	#Options {
+	float:right;
+	margin-top:-10px;
+	margin-right:20px;
+	}
+
+	.btn-info{
+	background-color:#222222;
+	border-color:#222222;
+	color:#A6E5E4;
+	}
+
+	.btn-info:hover {
+	border-color:#A6E5E4;
+	background-color:#A6E5E4;
+	color:#121B1B;
+	}
+
+	.btn-info:active {
+	border-color:#A6E5E4;
+	background-color:#A6E5E4;
+	color:#121B1B;
+	}
+
+	.btn-info:focus {
+	border-color:#A6E5E4;
+	background-color:#A6E5E4;
+	color:#121B1B;
+	}
+        
+   
