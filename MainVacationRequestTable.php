@@ -124,7 +124,52 @@ function CreateMainVactionRequest($employeeID, $firstChoiceStartDate,
         $inputIsValid = FALSE;
     }
     
+    //------------------------------------------------------------------------
+    // Need to check for booking range. Ensure than no booking period is more
+    // than 30 days duration.
+    //------------------------------------------------------------------------
+    if (isValidDate($firstChoiceStartDate) &&
+        isValidDate($firstChoiceEndDate)) 
+    {
+        $start_date = strtotime($firstChoiceStartDate);
+        $end_date = strtotime($firstChoiceEndDate);
+        
+        $diff_date = $end_date - $start_date;
+        $days = floor($diff_date/(60*60*24));
 
+        if ($days > 30)
+        {
+          $statusMessage .= "First choice end date is more than 30 days from ".
+                            "start date <br/>";
+          error_log("Invalid first choice passed to CreateMainVacationRequest.");
+          $inputIsValid = FALSE;
+            
+        }
+    }
+    
+        //------------------------------------------------------------------------
+    // Need to check for booking range. Ensure than no booking period is more
+    // than 30 days duration.
+    //------------------------------------------------------------------------
+    if (isValidDate($secondChoiceStartDate) &&
+        isValidDate($secondChoiceEndDate)) 
+    {
+        $start_date = strtotime($secondChoiceStartDate);
+        $end_date = strtotime($secondChoiceEndDate);
+        
+        $diff_date = $end_date - $start_date;
+        $days = floor($diff_date/(60*60*24));
+
+        if ($days > 30)
+        {
+          $statusMessage .= "second choice end date is more than 30 days from ".
+                            "start date <br/>";
+          error_log("Invalid second choice passed to CreateMainVacationRequest.");
+          $inputIsValid = FALSE;
+            
+        }
+    }
+    
     //-------------------------------------------------------------------------
     // Only attempt to insert a record in the database if the input parameters 
     // are ok.

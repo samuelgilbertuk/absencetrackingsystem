@@ -165,6 +165,36 @@ function CreateEmployee($employeeName, $emailAddress, $password,
         error_log("Invalid dateJoinedTheCompany passed to CreateEmployee.");
         $inputIsValid = FALSE;
     }
+    
+    //------------------------------------------------------------------------
+    // Need to check for extreme values for 'date joined the company'
+    // Don't allow records to be created if date joined is more than a month
+    // in the future, or more than 50 years in the past.
+    //------------------------------------------------------------------------
+    if (isValidDate($dateJoinedTheCompany)) {
+        $now = time();
+        $input_date = strtotime($dateJoinedTheCompany);
+        
+        $diff_date = $now - $input_date;
+        $daysSinceJoiningCompany = floor($diff_date/(60*60*24));
+
+        if ($daysSinceJoiningCompany > (365*50))
+        {
+          $statusMessage .= "Value given for Date joined the company can not be ".
+                          "more than 50 years in the past.<br/>";
+          error_log("Invalid dateJoinedTheCompany passed to CreateEmployee.");
+          $inputIsValid = FALSE;
+            
+        }
+
+        if ($daysSinceJoiningCompany < -30)
+        {
+           $statusMessage .= "Value given for Date joined the company can not ".
+                   "be more than 30 days in the future.<br/>";
+           error_log("Invalid dateJoinedTheCompany passed to CreateEmployee.");
+           $inputIsValid = FALSE;
+        }
+    }
 
     if (!is_numeric($annualLeaveEntitlement)) {
         $statusMessage .= "Please enter a valid value for annual leave ".

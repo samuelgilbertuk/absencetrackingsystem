@@ -322,7 +322,7 @@ function CreateNewDatabase($destroyExistingDB = false, $createWithTestData = fal
     CreateApprovedAbsenceDateTable();
     CreateAdHocAbsenceRequestTable();
     CreateMainVacationRequestTable();
-
+    CreateDefaultRecords("admin", "admin@admin.com","Zaq12wsx","2015-01-01", 19);
     if ($createWithTestData) {
 
         $annualLeave = CreateAbsenceType("Annual Leave", 1, 1);
@@ -333,6 +333,11 @@ function CreateNewDatabase($destroyExistingDB = false, $createWithTestData = fal
         $cashier = CreateCompanyRole("Cashier", 3);
         $customerAdvisor = CreateCompanyRole("Customer Advisor", 2);
         $manager = CreateCompanyRole("Manager", 1);
+        
+        $filter[COMP_ROLE_NAME] = "Admin";
+        $results   = RetrieveCompanyRoles($filter);
+        
+        $admin = $results[0];
 
         $steveBrookstein = CreateEmployee("Steve Brookstein", 
                                           "stevebrookstein@test.com", 
@@ -474,7 +479,7 @@ function CreateNewDatabase($destroyExistingDB = false, $createWithTestData = fal
         
         $leonaLewis = CreateEmployee("Leona Lewis", "leonalewis@test.com", 
                                      "Zaq12wsx", "2007-01-01", 20, NULL, 
-                                     $cashier[COMP_ROLE_ID], 1, 1);
+                                     $admin[COMP_ROLE_ID], 1, 1);
         
         $request = CreateAdHocAbsenceRequest($leonaLewis[EMP_ID], 
                     "2015-03-10", "2015-03-15", $sickness[ABS_TYPE_ID]);

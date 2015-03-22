@@ -21,7 +21,6 @@
     </head>
  
     <body>
-
         <form method="post">
              <input type="submit" name="drop" id="drop" value="Drop"/>
              <input type="submit" name="fill" id="fill" value="Fill"/>
