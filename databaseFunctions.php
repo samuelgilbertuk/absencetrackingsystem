@@ -322,7 +322,7 @@ function CreateNewDatabase($destroyExistingDB = false, $createWithTestData = fal
     CreateApprovedAbsenceDateTable();
     CreateAdHocAbsenceRequestTable();
     CreateMainVacationRequestTable();
-    CreateDefaultRecords("admin", "admin@admin.com","Zaq12wsx","2015-01-01", 19);
+//    CreateDefaultRecords("admin", "admin@admin.com","Zaq12wsx","2015-01-01", 19);
     if ($createWithTestData) {
 
         $annualLeave = CreateAbsenceType("Annual Leave", 1, 1);
